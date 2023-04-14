@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "healthie",
-    "slug": "healthie",
+    "slug": "myhealthieapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.sumanthale.myhealthieapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2e6f3ad8-cf92-4583-944c-1ece7fcad054"
+      }
+    },
+    "owner": "sumanthale"
   }
 }
