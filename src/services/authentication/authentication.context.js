@@ -21,11 +21,14 @@ import {
   deleteVaccine,
 } from "./authentication.service";
 import { auth } from "../../firebase";
+import { ActivityIndicator, Text } from "react-native";
+import { View } from "react-native";
 
 export const AuthenticationContext = createContext();
 
 export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isAuthLoading, setIsAuthLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [info, setInfo] = useState(null);
@@ -37,10 +40,12 @@ export const AuthenticationContextProvider = ({ children }) => {
     const subscription = onAuthStateChanged(auth, (user) => {
       if (user != null) {
         console.log("🚀🚀 We are authenticated now!");
+
         // setUser(user); // will set the user and all the useEffect's will use this user
         getUserDetails(user);
       } else {
         console.log("😢 We are not authenticated!");
+        setIsAuthLoading(false);
       }
     });
     return () => subscription();
@@ -55,7 +60,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         emailVerified,
         ...details,
       });
-
+      setIsAuthLoading(false);
       console.log({
         email,
         emailVerified,
@@ -266,7 +271,18 @@ export const AuthenticationContextProvider = ({ children }) => {
         createExam,
       }}
     >
-      {children}
+      {isAuthLoading ? (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+          }}
+        >
+          <ActivityIndicator size="large" />
+        </View>
+      ) : (
+        children
+      )}
     </AuthenticationContext.Provider>
   );
 };

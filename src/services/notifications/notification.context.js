@@ -15,7 +15,7 @@ export const NotificationContextProvider = ({ children }) => {
   const { user, saveNotification, deleteNotification } = useContext(
     AuthenticationContext
   );
-  const title = `Hello, ${user.name} Medication Reminder ⏰`;
+  const title = `Hello, ${user?.name} Medication Reminder ⏰`;
 
   const [expoPushToken, setExpoPushToken] = useState("");
   const [notification, setNotification] = useState(false);

@@ -27,6 +27,7 @@ import schedule from "../../../../assets/img/schedule";
 import exam from "../../../../assets/img/exam";
 import remainder from "../../../../assets/img/remainder";
 import notes from "../../../../assets/img/notes";
+import StepCounter from "../../../components/reusable/StepCounter";
 
 const HomeItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[3]};
@@ -34,47 +35,21 @@ const HomeItem = styled(List.Item)`
 `;
 
 export const HomeScreen = ({ navigation }) => {
-  const { user } = useContext(AuthenticationContext);
   return (
     <>
-      <HeaderContainer>
-        <SvgXml
-          key={`star-`}
-          xml={home}
-          width={400}
-          height={400}
-          style={{
-            position: "absolute",
-            right: 0,
-          }}
-        ></SvgXml>
-        <View>
-          <Text color="inverse" variant="title">
-            Hello,
-          </Text>
-          <Text color="inverse" variant="h5">
-            {user.name}
-          </Text>
-        </View>
-        {/* <View>
-          <SvgXml key={`star-`} xml={avatar} width={50} height={50} />
-        </View> */}
-        <Image
-          source={require("../../../../assets/img/avatar.png")}
-          style={{
-            position: "absolute",
-            width: 150,
-            height: 150,
-            bottom: -85,
-            right: 50,
-            resizeMode: "contain",
-          }}
-        />
-      </HeaderContainer>
+      {/* <View
+        style={{
+          transform: [
+            {
+              translate: [-10, -30],
+            },
+          ],
+         
+        }}
+      >
+        <StepCounter />
+      </View> */}
       <MainContainer>
-        <Text color="primary" variant="title">
-          Categories
-        </Text>
         <CategorieContainer
           style={{
             display: "flex",

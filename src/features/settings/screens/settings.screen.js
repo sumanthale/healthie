@@ -11,6 +11,10 @@ import { AuthenticationContext } from "../../../services/authentication/authenti
 import { SvgXml } from "react-native-svg";
 import { ScrollView } from "react-native";
 import account from "../../../../assets/img/account";
+import { HeaderContainer } from "../../home/components/home.styles";
+import home from "../../../../assets/home";
+import { View } from "react-native";
+import { Image } from "react-native";
 const TransparentSafeArea = styled(SafeArea)`
   background-color: transparent;
 `;
@@ -34,39 +38,75 @@ export const SettingsScreen = ({ navigation }) => {
   const { onLogout, user } = useContext(AuthenticationContext);
   return (
     <SettingsBackground>
-      <TransparentSafeArea>
-        <AvatarContainer>
-          <SvgXml key={`star-`} xml={account} width={300} height={300} />
-          <Text variant="title" color="dark">
-            {user.name}
+      <HeaderContainer>
+        <SvgXml
+          key={`star-`}
+          xml={home}
+          width={400}
+          height={400}
+          style={{
+            position: "absolute",
+            right: 0,
+          }}
+        ></SvgXml>
+        <View
+          style={{
+            transform: [
+              {
+                translate: [10, -20],
+              },
+            ],
+          }}
+        >
+          <Text color="inverse" variant="titleLg">
+            Welcome,
           </Text>
-        </AvatarContainer>
-        <ScrollView>
-          <List.Section>
-            <SettingsItem
-              title="Edit Account"
-              description="Edit your account information"
-              left={(props) => (
-                <List.Icon
-                  {...props}
-                  color={colors.brand.primary}
-                  icon="account-edit"
-                />
-              )}
-              onPress={() => navigation.navigate("EditAccount")}
-            />
-            <Spacer />
+          <Text color="inverse" variant="h5">
+            {user?.name}
+          </Text>
+        </View>
 
-            <SettingsItem
-              title="Logout"
-              left={(props) => (
-                <List.Icon {...props} color={colors.ui.error} icon="logout" />
-              )}
-              onPress={onLogout}
-            />
-          </List.Section>
-        </ScrollView>
-      </TransparentSafeArea>
+        <Image
+          source={require("../../../../assets/img/avatar.png")}
+          style={{
+            position: "absolute",
+            width: 150,
+            height: 150,
+            bottom: -85,
+            right: 50,
+            resizeMode: "contain",
+          }}
+        />
+      </HeaderContainer>
+
+      <Spacer size={"large"} />
+      <Spacer size={"large"} />
+      <Spacer size={"large"} />
+      <ScrollView>
+        <List.Section>
+          <SettingsItem
+            title="Edit Account"
+            description="Edit your account information"
+            left={(props) => (
+              <List.Icon
+                {...props}
+                color={colors.brand.primary}
+                icon="account-edit"
+              />
+            )}
+            onPress={() => navigation.navigate("EditAccount")}
+          />
+          <Spacer />
+
+          <SettingsItem
+            title="Logout"
+            left={(props) => (
+              <List.Icon {...props} color={colors.ui.error} icon="logout" />
+            )}
+            onPress={onLogout}
+          />
+        </List.Section>
+      </ScrollView>
     </SettingsBackground>
   );
 };
