@@ -29,24 +29,13 @@ const FitnessHomeScreen = () => {
     <>
       <View
         style={{
-          backgroundColor: "transparent",
+          backgroundColor: "#536DFE",
           padding: 10,
           height: 200,
           width: "100%",
           marginBottom: 60,
         }}
       >
-        <SvgXml
-          key={`star-`}
-          xml={home}
-          width={400}
-          height={400}
-          style={{
-            position: "absolute",
-            right: 0,
-            top: -90,
-          }}
-        ></SvgXml>
         <Text
           variant="title"
           color="inverse"
@@ -89,7 +78,7 @@ const FitnessHomeScreen = () => {
                 textAlign: "center",
               }}
             >
-              {calories}
+              {Number(calories).toFixed(2)}
             </Text>
             <Text color="inverse" variant="label" style={{ marginTop: 6 }}>
               KCAL
@@ -131,36 +120,15 @@ const FitnessHomeScreen = () => {
             color="inverse"
             style={{
               position: "absolute",
-              left: 95,
-              bottom: 15,
+              left: "18%",
+              bottom: 45,
+              textTransform: "uppercase",
+              fontSize: 22,
+              fontWeight: "bold",
             }}
           >
-            Advaced Workouts
+            Advanced Workouts
           </Text>
-          {/* <Ionicons
-            style={{
-              position: "absolute",
-              color: "white",
-              bottom: 15,
-              left: 30,
-              transform: [{ rotate: "90deg" }],
-            }}
-            name="md-barbell"
-            size={24}
-            color="black"
-          />
-
-          <MaterialCommunityIcons
-            style={{
-              position: "absolute",
-              color: "white",
-              bottom: 15,
-              left: 60,
-            }}
-            name="weight-lifter"
-            size={24}
-            color="black"
-          /> */}
         </Pressable>
       </View>
       <ScrollView>
@@ -171,4 +139,3 @@ const FitnessHomeScreen = () => {
 };
 
 export default FitnessHomeScreen;
-const styles = StyleSheet.create({});

@@ -38,55 +38,18 @@ export const SettingsScreen = ({ navigation }) => {
   const { onLogout, user } = useContext(AuthenticationContext);
   return (
     <SettingsBackground>
-      <HeaderContainer>
-        <SvgXml
-          key={`star-`}
-          xml={home}
-          width={400}
-          height={400}
-          style={{
-            position: "absolute",
-            right: 0,
-          }}
-        ></SvgXml>
-        <View
-          style={{
-            transform: [
-              {
-                translate: [10, -20],
-              },
-            ],
-          }}
-        >
-          <Text color="inverse" variant="titleLg">
-            Welcome,
-          </Text>
-          <Text color="inverse" variant="h5">
-            {user?.name}
-          </Text>
-        </View>
+      <AvatarContainer>
+        <SvgXml key={`star-`} xml={account} width={300} height={240} />
+        {/* <Text variant="title" color="dark">
+          {user.name}
+        </Text> */}
+      </AvatarContainer>
 
-        <Image
-          source={require("../../../../assets/img/avatar.png")}
-          style={{
-            position: "absolute",
-            width: 150,
-            height: 150,
-            bottom: -85,
-            right: 50,
-            resizeMode: "contain",
-          }}
-        />
-      </HeaderContainer>
-
-      <Spacer size={"large"} />
-      <Spacer size={"large"} />
-      <Spacer size={"large"} />
       <ScrollView>
         <List.Section>
           <SettingsItem
-            title="Edit Account"
-            description="Edit your account information"
+            title="Basic Information"
+            description="Update your basic information"
             left={(props) => (
               <List.Icon
                 {...props}
@@ -94,7 +57,15 @@ export const SettingsScreen = ({ navigation }) => {
                 icon="account-edit"
               />
             )}
-            onPress={() => navigation.navigate("EditAccount")}
+            onPress={() => navigation.navigate("BasicInformation")}
+          />
+          <Spacer />
+          <SettingsItem
+            title="Change Password"
+            left={(props) => (
+              <List.Icon {...props} color={colors.brand.primary} icon="key" />
+            )}
+            onPress={() => navigation.navigate("EditPassword")}
           />
           <Spacer />
 

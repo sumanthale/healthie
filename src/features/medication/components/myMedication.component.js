@@ -34,7 +34,6 @@ export const MyMedicationComponent = ({ medication }) => {
 
       <Info>
         <Text variant="title">{name}</Text>
-
         <Section
           style={{
             flexDirection: "row",
@@ -45,8 +44,8 @@ export const MyMedicationComponent = ({ medication }) => {
             <SvgXml
               key={`star-`}
               xml={tablets}
-              width={100}
-              height={100}
+              width={70}
+              height={70}
               style={{
                 alignSelf: "center",
               }}
@@ -56,12 +55,14 @@ export const MyMedicationComponent = ({ medication }) => {
             <Chip
               style={{
                 backgroundColor: colors.brand.dark,
+                marginLeft: 10,
               }}
               textStyle={{
                 color: "#fff",
                 fontSize: 12,
                 fontWeight: "bold",
                 letterSpacing: 1,
+                textAlign: "center",
               }}
             >
               Every {day} {dayjs(time.toDate()).format("hh:mm A")}

@@ -1,23 +1,15 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Image,
-  Pressable,
-} from "react-native";
+import { StyleSheet, Text, SafeAreaView, Image, Pressable } from "react-native";
 import React, { useState, useContext } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { FitnessContext } from "../../../services/fitness/workout.context";
 
 const FitScreen = () => {
   const route = useRoute();
-  // console.log(route.params);
   const navigation = useNavigation();
   const [index, setIndex] = useState(0);
   const excersise = route.params.excersises;
   const current = excersise[index];
-  // console.log(current, "first excersise");
+  console.log(current, "first excersise");
 
   const {
     completed,
@@ -63,7 +55,12 @@ const FitScreen = () => {
       {index + 1 >= excersise.length ? (
         <Pressable
           onPress={() => {
-            navigation.navigate("Home");
+            navigation.navigate("FitnessHome");
+            setCompleted([...completed, current.name]);
+            setWorkout(workout + 1);
+            setMinutes(minutes + 2.5);
+            setCalories(calories + 6.3);
+            // setIndex(index + 1);
           }}
           style={{
             backgroundColor: "blue",
@@ -94,12 +91,14 @@ const FitScreen = () => {
             setWorkout(workout + 1);
             setMinutes(minutes + 2.5);
             setCalories(calories + 6.3);
-            setTimeout(() => {
-              setIndex(index + 1);
-            }, 2000);
+            setIndex(index + 1);
+
+            // setTimeout(() => {
+            //   setIndex(index + 1);
+            // }, 2000);
           }}
           style={{
-            backgroundColor: "blue",
+            backgroundColor: "#536DFE",
             marginLeft: "auto",
             marginRight: "auto",
             marginTop: 30,
@@ -134,13 +133,14 @@ const FitScreen = () => {
           disabled={index === 0}
           onPress={() => {
             navigation.navigate("Rest");
+            setIndex(index - 1);
 
-            setTimeout(() => {
-              setIndex(index - 1);
-            }, 2000);
+            // setTimeout(() => {
+            //   setIndex(index - 1);
+            // }, 2000);
           }}
           style={{
-            backgroundColor: "green",
+            backgroundColor: "#138000",
             padding: 10,
             borderRadius: 20,
             marginHorizontal: 20,
@@ -156,10 +156,10 @@ const FitScreen = () => {
         {index + 1 >= excersise.length ? (
           <Pressable
             onPress={() => {
-              navigation.navigate("Home");
+              navigation.navigate("FitnessHome");
             }}
             style={{
-              backgroundColor: "green",
+              backgroundColor: "#138000",
               padding: 10,
               borderRadius: 20,
               marginHorizontal: 20,
@@ -179,14 +179,15 @@ const FitScreen = () => {
         ) : (
           <Pressable
             onPress={() => {
-              navigation.navigate("Rest");
+              // navigation.navigate("Rest");
+              setIndex(index + 1);
 
-              setTimeout(() => {
-                setIndex(index + 1);
-              }, 2000);
+              // setTimeout(() => {
+              //   setIndex(index + 1);
+              // }, 2000);
             }}
             style={{
-              backgroundColor: "green",
+              backgroundColor: "#138000",
               padding: 10,
               borderRadius: 20,
               marginHorizontal: 20,

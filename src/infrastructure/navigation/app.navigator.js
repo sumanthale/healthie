@@ -11,13 +11,16 @@ import { MedicationContextProvider } from "../../services/medication/medication.
 import { NotificationContextProvider } from "../../services/notifications/notification.context";
 import { FitnessContextProvider } from "../../services/fitness/workout.context";
 import { FitnessNavigator } from "./fitness.navigator";
+import { CalcualteNavigator } from "./calculate.navigator";
+import { DietNavigator } from "./diet.navigation";
 
 const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
   Home: "md-home",
-  Activity: "activity",
-  Fitness: "md-barbell",
+  Calculate: "md-calculator",
+  Fitness: "activity",
+  Diet: "fast-food",
   Settings: "md-settings",
 };
 
@@ -35,7 +38,7 @@ export const AppNavigator = () => {
               screenOptions={({ route }) => {
                 return {
                   tabBarIcon: ({ size, color }) => {
-                    if (route.name === "Activity")
+                    if (route.name === "Fitness")
                       return (
                         <Feather name="activity" size={size} color={color} />
                       );
@@ -52,6 +55,7 @@ export const AppNavigator = () => {
 
                   activeTintColor: colors.brand.primary,
                   inactiveTintColor: colors.brand.muted,
+                  tabBarHideOnKeyboard: true,
                 };
               }}
             >
@@ -63,8 +67,8 @@ export const AppNavigator = () => {
                 }}
               />
               <Tab.Screen
-                name="Activity"
-                component={HomeNavigator}
+                name="Calculate"
+                component={CalcualteNavigator}
                 options={{
                   headerShown: false,
                 }}
@@ -72,6 +76,13 @@ export const AppNavigator = () => {
               <Tab.Screen
                 name="Fitness"
                 component={FitnessNavigator}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Tab.Screen
+                name="Diet"
+                component={DietNavigator}
                 options={{
                   headerShown: false,
                 }}

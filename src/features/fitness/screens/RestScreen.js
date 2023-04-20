@@ -4,23 +4,22 @@ import { useNavigation } from "@react-navigation/native";
 
 const RestScreen = () => {
   const navigation = useNavigation();
-  let timer = 0;
+
   const [timeLeft, setTimeLeft] = useState(3);
 
-  const startTime = () => {
-    setTimeout(() => {
+  useEffect(() => {
+    let timer = setTimeout(() => {
       if (timeLeft <= 0) {
         navigation.goBack();
+        console.log("goBack");
         clearTimeout(timer);
+      } else {
+        setTimeLeft(timeLeft - 1);
       }
-      setTimeLeft(timeLeft - 1);
     }, 1000);
-  };
-  useEffect(() => {
-    startTime();
-    //clean up
+
     return () => clearTimeout(timer);
-  });
+  }, [timeLeft]);
   return (
     <SafeAreaView>
       <Image

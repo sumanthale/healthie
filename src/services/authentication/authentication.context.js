@@ -16,9 +16,6 @@ import {
   reauthenticate,
   saveUserNotification,
   updateUser,
-  schedule,
-  medicalExam,
-  deleteVaccine,
 } from "./authentication.service";
 import { auth } from "../../firebase";
 import { ActivityIndicator, Text } from "react-native";
@@ -54,16 +51,11 @@ export const AuthenticationContextProvider = ({ children }) => {
   const getUserDetails = async (user) => {
     try {
       const details = await fetchUser(user.uid);
-      const { email, emailVerified } = user;
       setUser({
-        email,
-        emailVerified,
         ...details,
       });
       setIsAuthLoading(false);
       console.log({
-        email,
-        emailVerified,
         ...details,
       });
     } catch (error) {
@@ -196,63 +188,12 @@ export const AuthenticationContextProvider = ({ children }) => {
     deleteUserNotification(medication);
   };
 
-  const scheduleVaccine = async (
-    vaccineID,
-    description,
-    purpose,
-    location,
-    date
-  ) => {
-    try {
-      await schedule(vaccineID, description, purpose, location, date);
-      setUser((user) => {
-        return {
-          ...user,
-          schedules: {
-            vaccineID,
-            description,
-            purpose,
-            location,
-            date,
-          },
-        };
-      });
-      return true;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  };
-  const createExam = async (exam) => {
-    try {
-      await medicalExam(exam);
-      return true;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  };
-  const clearSchedule = async () => {
-    try {
-      await deleteVaccine();
-      setUser((user) => {
-        return {
-          ...user,
-          schedules: null,
-        };
-      });
-      return true;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  };
-
   return (
     <AuthenticationContext.Provider
       value={{
         isAuthenticated: !!user,
         user,
+        setUser,
         isLoading,
         error,
         onLogin,
@@ -266,9 +207,6 @@ export const AuthenticationContextProvider = ({ children }) => {
         changePassword,
         saveNotification,
         deleteNotification,
-        scheduleVaccine,
-        clearSchedule,
-        createExam,
       }}
     >
       {isAuthLoading ? (

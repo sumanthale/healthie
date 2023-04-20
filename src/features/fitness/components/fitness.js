@@ -13,13 +13,13 @@ export default [
         name: "JUMPING JACKS",
         sets: 12,
       },
-      {
-        id: "11",
-        image:
-          "https://177d01fbswx3jjl1t20gdr8j-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/Incline-Push-Up.gif",
-        name: "INCLINE PUSH-UPS",
-        sets: 10,
-      },
+      // {
+      //   id: "11",
+      //   image:
+      //     "https://177d01fbswx3jjl1t20gdr8j-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/Incline-Push-Up.gif",
+      //   name: "INCLINE PUSH-UPS",
+      //   sets: 10,
+      // },
       {
         id: "12",
         image:

@@ -1,35 +1,42 @@
 import styled from "styled-components/native";
 import { Button, TextInput } from "react-native-paper";
+import { colors } from "../../../infrastructure/theme/colors";
 import { Text } from "../../../components/typography/text.component";
 
-export const SettingsBackground = styled.ImageBackground.attrs({
-  // source: require("../../../../assets/home_bg3.jpg"),
-  // resizeMode: "cover",
-})`
+export const AccountBackground = styled.View`
   flex: 1;
-  background-color: #fff;
 `;
 
-export const SettingsCover = styled.View`
+export const AccountCover = styled.View`
   position: absolute;
   width: 100%;
   height: 100%;
 `;
 
-export const SettingsContainer = styled.View`
-  padding: ${(props) => props.theme.space[4]};
+export const AccountContainer = styled.View`
+  padding: 0 ${(props) => props.theme.space[4]};
   align-self: stretch;
+  margin: auto 0;
+`;
+export const RegisterBackground = styled.View`
+  flex: 1;
 `;
 
+export const RegisterContainer = styled.View`
+  padding: 0 ${(props) => props.theme.space[4]};
+  /* align-self: stretch; */
+  margin: auto 0;
+  justify-content: center;
+`;
 export const AuthButton = styled(Button)`
   padding: ${(props) => {
     return props.theme.space[2];
   }};
-  border-radius: 6px;
   background-color: ${(props) =>
     props.buttonColor === "dark"
       ? props.theme.colors.brand.dark
       : props.theme.colors.brand.primary};
+  border-radius: 10px;
 `;
 
 export const AuthInput = styled(TextInput)`
@@ -37,7 +44,7 @@ export const AuthInput = styled(TextInput)`
 `;
 
 export const Title = styled(Text)`
-  font-size: 50px;
+  font-weight: bold;
   text-align: center;
   color: #000;
   text-transform: uppercase;
@@ -66,36 +73,13 @@ export const InfoContainer = styled.View`
   margin-bottom: ${(props) => props.theme.space[2]};
 `;
 
-export const BoxView = styled.View`
+export const HeadingWrapper = styled.View`
   display: flex;
-  width: 100%;
-
-  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-`;
-export const IconView = styled.View`
-  width: 12%;
-`;
-export const InputView = styled.View`
-  width: 88%;
-  display: flex;
   flex-direction: row;
-  gap: 10px;
-  justify-content: space-between;
+  /* padding: ${(props) => props.theme.space[3]} */
 `;
-
-export const STextInput = styled(TextInput)`
-  background-color: white;
-  flex: 1;
-`;
-export const GenderButton = styled(Button)`
-  border-radius: 0;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  padding: 15px;
-  /* height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
-  flex: 1;
+export const ImageWrapper = styled.View`
+  margin: 0 auto;
 `;

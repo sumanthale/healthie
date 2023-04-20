@@ -2,7 +2,6 @@ import {
   StyleSheet,
   Text,
   View,
-  SafeAreaView,
   Image,
   Pressable,
   ScrollView,
@@ -72,7 +71,7 @@ const FitnessScreen = () => {
           navigation.navigate("Fit", {
             excersises: route.params.excersises,
           });
-          setCompleted([]);
+          // setCompleted([]);
         }}
         style={{
           backgroundColor: "#536DFE",
@@ -100,5 +99,3 @@ const FitnessScreen = () => {
 };
 
 export default FitnessScreen;
-
-const styles = StyleSheet.create({});

@@ -1,13 +1,13 @@
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { EditPassword } from "../../features/settings/screens/change-password.screen";
-import { EditUserName } from "../../features/settings/screens/username.screen";
+import { EditProflile } from "../../features/settings/screens/edit-profile.screen";
 
 const Tab = createMaterialTopTabNavigator();
 
 const EditAccountNavigator = () => {
   return (
     <Tab.Navigator
-      initialRouteName="EditUserName"
+      initialRouteName="EditProfile"
       screenOptions={{
         // tabBarActiveTintColor: "#e91e63",
         tabBarLabelStyle: { fontSize: 12 },
@@ -15,9 +15,9 @@ const EditAccountNavigator = () => {
       }}
     >
       <Tab.Screen
-        name="EditUserName"
-        component={EditUserName}
-        options={{ tabBarLabel: "Edit Name" }}
+        name="EditProfile"
+        component={EditProflile}
+        options={{ tabBarLabel: "Edit Profile" }}
       />
       <Tab.Screen
         name="EditPassword"

@@ -12,8 +12,8 @@ const AllFitnessCards = () => {
       {exerciseNames.map(({ name, url }, idx) => (
         <Pressable
           onPress={() =>
-            navigation.navigate("Workout", {
-              name,
+            navigation.navigate("AllWorkout", {
+              title: name,
             })
           }
           style={{ alignItems: "center", justifyContent: "center", margin: 10 }}
@@ -29,11 +29,12 @@ const AllFitnessCards = () => {
           />
           <Text
             variant="title"
-            // color="inverse"
+            color="inverse"
             style={{
               position: "absolute",
               left: 20,
               top: 20,
+              textTransform: "uppercase",
             }}
           >
             {name}
@@ -49,6 +50,28 @@ const AllFitnessCards = () => {
             size={24}
             color="black"
           />
+          <MaterialCommunityIcons
+            style={{
+              position: "absolute",
+              color: "white",
+              bottom: 15,
+              left: 35,
+            }}
+            name="lightning-bolt"
+            size={24}
+            color="black"
+          />
+          <MaterialCommunityIcons
+            style={{
+              position: "absolute",
+              color: "white",
+              bottom: 15,
+              left: 50,
+            }}
+            name="lightning-bolt"
+            size={24}
+            color="black"
+          />
         </Pressable>
       ))}
     </View>
@@ -56,5 +79,3 @@ const AllFitnessCards = () => {
 };
 
 export default AllFitnessCards;
-
-const styles = StyleSheet.create({});

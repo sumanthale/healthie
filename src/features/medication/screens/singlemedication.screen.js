@@ -61,7 +61,9 @@ const SingleMedicationScreen = ({ navigation }) => {
             type="text"
             keyboardType="default"
             onChangeText={(u) => setName(u)}
-            mode="outlined"
+            style={{
+              backgroundColor: "#fff",
+            }}
           />
         </Spacer>
         <Spacer size="medium">
@@ -78,13 +80,13 @@ const SingleMedicationScreen = ({ navigation }) => {
         </Spacer>
         <Spacer size="medium">
           <AuthInput
-            label="Choose Time "
+            label="Choose Time"
             value={time && dayjs(time).format("hh:mm A")}
             disabled
             mode="outlined"
             left={
               <TextInput.Icon
-                name="calendar"
+                icon="calendar"
                 onPress={() => {
                   setShowTime(true);
                 }}

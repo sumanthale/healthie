@@ -3,9 +3,12 @@ import { SettingsScreen } from "../../features/settings/screens/settings.screen"
 
 import {
   createStackNavigator,
-  CardStyleInterpolators,
+  TransitionPresets,
 } from "@react-navigation/stack";
-import EditAccountNavigator from "./edit-account.navigator";
+import BasicInformationScreen from "../../features/settings/screens/basic-information.screen";
+import { EditPassword } from "../../features/settings/screens/change-password.screen";
+import { colors } from "../theme/colors";
+import { Button } from "react-native-paper";
 
 const SettingsStack = createStackNavigator();
 
@@ -13,22 +16,35 @@ export const SettingsNavigator = ({ route, navigation }) => {
   return (
     <SettingsStack.Navigator
       screenOptions={{
-        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        ...TransitionPresets.SlideFromRightIOS,
         headerMode: "screen",
+        headerStyle: {
+          backgroundColor: colors.brand.primary,
+        },
+        headerTintColor: "white",
+        headerTitleAlign: "center",
       }}
+      initialRouteName="SettingsScreen"
     >
       <SettingsStack.Screen
+        name="SettingsScreen"
         options={{
-          header: () => null,
+          headerShown: false,
         }}
-        name="Account"
         component={SettingsScreen}
       />
       <SettingsStack.Screen
-        name="EditAccount"
-        component={EditAccountNavigator}
+        name="BasicInformation"
+        component={BasicInformationScreen}
         options={{
-          title: "Edit Account",
+          title: "Basic Information",
+        }}
+      />
+      <SettingsStack.Screen
+        name="EditPassword"
+        component={EditPassword}
+        options={{
+          title: "Edit Password",
         }}
       />
     </SettingsStack.Navigator>

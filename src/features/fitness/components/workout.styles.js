@@ -6,14 +6,13 @@ export const Icon = styled.Image`
   height: 15px;
 `;
 
-export const HealthCard = styled(Card)`
-  margin-top: ${(props) => props.theme.space[3]};
+export const TherapyCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
   width: 95%;
   align-self: center;
 `;
 
-export const HealthCardCover = styled(Card.Cover)`
+export const TherapyCardCover = styled(Card.Cover)`
   padding: ${(props) => props.theme.space[3]};
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
@@ -41,5 +40,6 @@ export const Section = styled.View`
 export const SectionEnd = styled.View`
   flex: 1;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 `;

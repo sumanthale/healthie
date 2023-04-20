@@ -10,6 +10,7 @@ import FitnessScreen from "../../features/fitness/screens/FitnessScreen";
 import FitScreen from "../../features/fitness/screens/FitScreen";
 import RestScreen from "../../features/fitness/screens/RestScreen";
 import SearchWorkoutsScreen from "../../features/fitness/screens/SearchWorkoutsScreen";
+import AllFitnessScreen from "../../features/fitness/screens/AllFitnessScreen";
 
 const FitnessStack = createStackNavigator();
 
@@ -45,6 +46,13 @@ export const FitnessNavigator = () => {
       <FitnessStack.Screen
         name="Workout"
         component={FitnessScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <FitnessStack.Screen
+        name="AllWorkout"
+        component={AllFitnessScreen}
         options={{
           headerShown: false,
         }}

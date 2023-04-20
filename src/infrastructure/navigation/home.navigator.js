@@ -7,9 +7,9 @@ import {
 import { HomeScreen } from "../../features/home/screens/home.screen";
 import { colors } from "../theme/colors";
 import MedicationNavigator from "./medication.navigator";
-import SchedulingScreen from "../../features/scheduling/screens/scheduling.screen";
-import ExamScreen from "../../features/exams/screens/exams.screen";
 import NotesScreen from "../../features/notes/screens/notes.screen";
+import FoodNavigator from "./food.navigator";
+import BasicInformationScreen from "../../features/settings/screens/basic-information.screen";
 
 const HomeStack = createStackNavigator();
 
@@ -34,22 +34,20 @@ export const HomeNavigator = () => {
         }}
         component={HomeScreen}
       />
-
       <HomeStack.Screen
-        name="Schedule"
-        component={SchedulingScreen}
+        name="Food"
+        component={FoodNavigator}
         options={{
-          title: "Vaccine Scheduling",
+          headerShown: false,
         }}
       />
       <HomeStack.Screen
-        name="Exam"
-        component={ExamScreen}
+        name="BasicInfoC"
         options={{
-          title: "Medical Exam",
+          headerShown: false,
         }}
+        component={BasicInformationScreen}
       />
-
       <HomeStack.Screen
         name="Remainder"
         component={MedicationNavigator}
